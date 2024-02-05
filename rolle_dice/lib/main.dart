@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: Text('Hello World!')));
+  runApp(
+    const MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.deepPurpleAccent,
+        body: Center(
+          child: Text('Hello World!'),
+        ),
+      ),
+    ),
+  );
 }
