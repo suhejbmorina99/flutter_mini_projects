@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rolle_dice/text_style.dart';
+
+const startAlignment = Alignment.topLeft;
+const endAlignment = Alignment.bottomRight;
 
 class BodyContent extends StatelessWidget {
   const BodyContent({super.key});
@@ -12,16 +16,11 @@ class BodyContent extends StatelessWidget {
             Color.fromARGB(255, 74, 58, 223),
             Color.fromARGB(255, 139, 127, 240)
           ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          begin: startAlignment,
+          end: endAlignment,
         ),
       ),
-      child: const Center(
-        child: Text(
-          'Hello World!',
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-      ),
+      child: const Center(child: TextStyleWidget()),
     );
   }
 }
