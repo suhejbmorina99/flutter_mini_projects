@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rolle_dice/text_style.dart';
+// import 'package:rolle_dice/text_style.dart';
+import 'package:rolle_dice/dice_roller.dart';
 
 const startAlignment = Alignment.topLeft;
 const endAlignment = Alignment.bottomRight;
@@ -21,7 +22,9 @@ class BodyContent extends StatelessWidget {
           end: endAlignment,
         ),
       ),
-      child: const Center(child: TextStyleWidget('Hello World!')),
+      child: const Center(
+        child: DiceRoller(),
+      ),
     );
   }
 }
