@@ -20,7 +20,7 @@ class BodyContent extends StatelessWidget {
           end: endAlignment,
         ),
       ),
-      child: const Center(child: TextStyleWidget()),
+      child: const Center(child: TextStyleWidget('Hello World!')),
     );
   }
 }
