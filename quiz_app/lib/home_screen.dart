@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const HomeScreen());
-}
-
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen(this.startQuiz, {super.key});
 
-  void startQuiz() {}
+  final void Function() startQuiz;
 
   @override
   Widget build(BuildContext context) {
