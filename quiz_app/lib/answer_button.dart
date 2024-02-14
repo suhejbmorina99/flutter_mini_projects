@@ -11,6 +11,7 @@ class AnswerButton extends StatelessWidget {
   // po une pe perdori named arguments
   // se kur e perdori qete komponent dika tjeter
   // e di cilin parameter pe perdori si value shihe file quiz_questions
+  // dmth named argument targetohet permes emrit te parametrit
 
   // const AnswerButton(
   //   this.answerText,
@@ -25,6 +26,14 @@ class AnswerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onTap,
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.circular(40),
+        // ),
+      ),
       child: Text(answerText),
     );
   }
