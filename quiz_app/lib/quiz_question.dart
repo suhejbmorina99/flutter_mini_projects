@@ -12,10 +12,18 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuizQuestionScreen extends State<QuestionScreen> {
-  final currentQuestion = questions[0];
+  var currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = questions[currentQuestionIndex];
+
     return Center(
       child: Container(
         margin: const EdgeInsets.all(40),
@@ -37,8 +45,8 @@ class _QuizQuestionScreen extends State<QuestionScreen> {
             // Ky funksion e ndryshon tipin e currentQuestion prej List te string
             // ne list te answerButtons, por kjo nuk e ndryshon answers origjinal
             // ne file qe gjendet tek data folderi, vetem ketu behet konvertimi
-            ...currentQuestion.answers.map((answer) {
-              return AnswerButton(answerText: answer, onTap: () {});
+            ...currentQuestion.getShuffledAnswer().map((answer) {
+              return AnswerButton(answerText: answer, onTap: answerQuestion);
             }),
           ],
         ),
