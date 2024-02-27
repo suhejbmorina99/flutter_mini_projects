@@ -19,7 +19,7 @@ class Expense {
     required this.category,
   }) : id = uuid.v4();
 
-  // permes qeseja 3rd party library e shtojm nje uniq id dinamike,
+  // permes qeseja 3rd party library e shtojm nje unique id dinamike,
   // mbasi qe te krijohet nje objekt me keto te dhena.
 
   final String id;
