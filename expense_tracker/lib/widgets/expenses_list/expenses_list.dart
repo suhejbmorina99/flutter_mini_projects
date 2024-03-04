@@ -3,9 +3,14 @@ import 'package:expense_tracker/widgets/expenses_list/expense_item.dart';
 import 'package:expense_tracker/models/expense.dart';
 
 class ExpensesList extends StatelessWidget {
-  const ExpensesList({super.key, required this.expenses});
+  const ExpensesList({
+    super.key,
+    required this.expenses,
+    required this.onRemoveExpense,
+  });
 
   final List<Expense> expenses;
+  final void Function(Expense expense) onRemoveExpense;
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +20,13 @@ class ExpensesList extends StatelessWidget {
     // 'expense' qe osht me rende pra i bon render kur ka nevoj duke e
     // permisu performance
     return ListView.builder(
-      itemCount: expenses.length,
-      itemBuilder: (ctx, index) => ExpenseItem(
-        expense: expenses[index],
-      ),
-    );
+        itemCount: expenses.length,
+        itemBuilder: (ctx, index) => Dismissible(
+              key: ValueKey(expenses[index]),
+              onDismissed: (direction) => onRemoveExpense(expenses[index]),
+              child: ExpenseItem(
+                expense: expenses[index],
+              ),
+            ));
   }
 }
