@@ -3,6 +3,7 @@ import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
@@ -68,6 +69,9 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    // Sherben me kqyre sa width kemi aktulaisht ne paisje
+    // final width = MediaQuery.of(context).size.width;
+
     Widget mainContet = const Center(
       child: Text('No expense found, add new one'),
     );
@@ -80,23 +84,45 @@ class _ExpensesState extends State<Expenses> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Expense Tracker'),
-        actions: [
-          IconButton(
-            onPressed: _addExpensesOverlay,
-            icon: const Icon(Icons.add),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(
-            child: mainContet,
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Expense Tracker'),
+          actions: [
+            IconButton(
+              onPressed: _addExpensesOverlay,
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
+        body: Column(
+          children: [
+            Chart(expenses: _registeredExpenses),
+            Expanded(
+              child: mainContet,
+            ),
+          ],
+        )
+        // NOTE: Qeshtu mundem me bo nese dojm me bo responsive
+        //Dmth me punu edhe ne landscape mode
+
+        // body: width < 600
+        //     ? Column(
+        //         children: [
+        //           Chart(expenses: _registeredExpenses),
+        //           Expanded(
+        //             child: mainContet,
+        //           ),
+        //         ],
+        //       )
+        //     : Row(
+        //         children: [
+        //           Expanded(
+        //             child: Chart(expenses: _registeredExpenses),
+        //           ),
+        //           Expanded(
+        //             child: mainContet,
+        //           ),
+        //         ],
+        //       ),
+        );
   }
 }
