@@ -32,6 +32,8 @@ class _ExpensesState extends State<Expenses> {
 
   void _addExpensesOverlay() {
     showModalBottomSheet(
+      useSafeArea: true, // sigurohet qe overlay nuk pengohet nga kamera apo statusbari
+      // dmth overlay fillon aty ky mbaron hapsira e rezervume per ate pjes
       isScrollControlled: true, // qekjo e bon modalin sa view dmth e rrit
       context: context,
       builder: (ctx) => NewExpense(onAddExpanse: _addExpenses),
