@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/data/dummy_data.dart';
+import 'package:meals_app/widgets/category_grid_item.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -11,31 +13,19 @@ class Categories extends StatelessWidget {
         backgroundColor: Colors.green,
       ),
       body: GridView(
+        padding: const EdgeInsets.all(12),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 3 / 2, // Me kta nenkuptojm 3/2 madhsia e elementit
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        children: const [
-          Card(
-            child: Text('1'),
-          ),
-          Card(
-            child: Text('2'),
-          ),
-          Card(
-            child: Text('3'),
-          ),
-          Card(
-            child: Text('4'),
-          ),
-          Card(
-            child: Text('5'),
-          ),
-          Card(
-            child: Text('6'),
-          ),
+        children: [
+          // availableCategories.map((category) => CategoryGridItem(category: category))
+          //     .toList(),
+
+          for (final specificCategory in availableCategories)
+            CategoryGridItem(category: specificCategory),
         ],
       ),
     ));
