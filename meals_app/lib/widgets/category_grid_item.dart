@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+
 import 'package:meals_app/models/category.dart';
 
 class CategoryGridItem extends StatelessWidget {
@@ -8,9 +9,14 @@ class CategoryGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
+    // Me InkWell e bojm cdo element tapable
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(10), // Ky borderRadius per masi qe ta bon tap
+      splashColor: Colors.black,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
               category.color.withOpacity(0.75),
@@ -19,8 +25,17 @@ class CategoryGridItem extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(10)),
-      child: Text(category.title),
+          borderRadius: BorderRadius.circular(10), // Ky borderRadius per deafult elementet
+        ),
+        child: Text(
+          category.title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }
