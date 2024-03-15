@@ -7,7 +7,7 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text('Choose a category'),
         backgroundColor: Colors.green,
@@ -28,6 +28,6 @@ class Categories extends StatelessWidget {
             CategoryGridItem(category: specificCategory),
         ],
       ),
-    ));
+    );
   }
 }
