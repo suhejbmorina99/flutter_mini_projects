@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/widgets/meal_item_treit.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
@@ -7,15 +8,26 @@ class MealItem extends StatelessWidget {
 
   final Meal meal;
 
+  String get complexityText {
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1);
+  }
+
+  String get affordabilityText {
+    return meal.affordability.name[0].toUpperCase() +
+        meal.affordability.name.substring(1);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      clipBehavior: Clip.hardEdge, // Kta e bojm puna qe mos me marr settings tjera
+      clipBehavior:
+          Clip.hardEdge, // Kta e bojm puna qe mos me marr settings tjera
       // per rounded border se card widget i ka border jo rounded e me kta i thojm
       // mos me kqyr ma posht :D
-      elevation: 2,// lloj box shadow
+      elevation: 2, // lloj box shadow
       child: InkWell(
         onTap: () {},
         child: Stack(
@@ -27,7 +39,8 @@ class MealItem extends StatelessWidget {
               // shfaqet image
               placeholder: MemoryImage(kTransparentImage),
               image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover, //e bon fit imazhin ne height edhe width te caktum
+              fit: BoxFit
+                  .cover, //e bon fit imazhin ne height edhe width te caktum
               height: 200,
               width: double.infinity,
             ),
@@ -54,7 +67,23 @@ class MealItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Row(
-                      children: [],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MealItemTreit(
+                          icon: Icons.schedule,
+                          label: '${meal.duration} min',
+                        ),
+                        const SizedBox(width: 12),
+                        MealItemTreit(
+                          icon: Icons.soup_kitchen,
+                          label: complexityText,
+                        ),
+                        const SizedBox(width: 12),
+                        MealItemTreit(
+                          icon: Icons.attach_money,
+                          label: affordabilityText,
+                        ),
+                      ],
                     ),
                   ],
                 ),
