@@ -13,6 +13,9 @@ class FilterScreen extends StatefulWidget {
 
 class _FilterScreenState extends State<FilterScreen> {
   var _glutenFreeFilterSet = false;
+  var _lactoseFreeFilterSet = false;
+  var _vegetarianFilterSet = false;
+  var _veganFilterSet = false;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +50,60 @@ class _FilterScreenState extends State<FilterScreen> {
             ),
             subtitle: const Text(
               'Include only gluten-free meals.',
+              style: TextStyle(color: Colors.black),
+            ),
+            activeColor: Colors.green,
+            contentPadding: const EdgeInsets.only(left: 43, right: 22),
+          ),
+          SwitchListTile(
+            value: _lactoseFreeFilterSet,
+            onChanged: (isChecked) {
+              setState(() {
+                _lactoseFreeFilterSet = isChecked;
+              });
+            },
+            title: const Text(
+              'Lactose-free',
+              style: TextStyle(color: Colors.black),
+            ),
+            subtitle: const Text(
+              'Include only lactose-free meals.',
+              style: TextStyle(color: Colors.black),
+            ),
+            activeColor: Colors.green,
+            contentPadding: const EdgeInsets.only(left: 43, right: 22),
+          ),
+          SwitchListTile(
+            value: _vegetarianFilterSet,
+            onChanged: (isChecked) {
+              setState(() {
+                _vegetarianFilterSet = isChecked;
+              });
+            },
+            title: const Text(
+              'Vegetarian',
+              style: TextStyle(color: Colors.black),
+            ),
+            subtitle: const Text(
+              'Include only vegetarian meals.',
+              style: TextStyle(color: Colors.black),
+            ),
+            activeColor: Colors.green,
+            contentPadding: const EdgeInsets.only(left: 43, right: 22),
+          ),
+          SwitchListTile(
+            value: _veganFilterSet,
+            onChanged: (isChecked) {
+              setState(() {
+                _veganFilterSet = isChecked;
+              });
+            },
+            title: const Text(
+              'Vegan',
+              style: TextStyle(color: Colors.black),
+            ),
+            subtitle: const Text(
+              'Include only vegan meals.',
               style: TextStyle(color: Colors.black),
             ),
             activeColor: Colors.green,
