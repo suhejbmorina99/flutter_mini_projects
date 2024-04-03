@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_questions/screens/home_screen.dart';
+import 'package:go_questions/screens/questions_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      home: const HomeScreen(),
+      routes: {
+        '/questionsscreen': (context) => const QuestionsScreen(),
+      },
     );
   }
 }
