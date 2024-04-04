@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 SizedBox(
                     height: MediaQuery.of(context).size.height *
-                        0.1), // Adjust height based on your design
+                        0.2), // Adjust height based on your design
                 Image.asset(
                   'assets/images/home_image.png',
                   width: 350,
