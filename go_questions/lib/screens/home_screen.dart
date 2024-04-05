@@ -60,7 +60,13 @@ class HomeScreen extends StatelessWidget {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/questionsscreen');
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/questionsscreen',
+                      ModalRoute.withName('/questionsscreen'),
+                      //A route that blocks interaction with previous routes.
+                      //Qekjo ModalRoute
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(

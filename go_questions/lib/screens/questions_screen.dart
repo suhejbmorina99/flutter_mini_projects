@@ -83,7 +83,14 @@ class _QuestionScreenState extends State<QuestionsScreen> {
       body: Center(
         child: Column(
           children: [
-            Text(currentQuestion.question),
+            Text(
+              currentQuestion.question,
+              style: GoogleFonts.nunito(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
+            ),
             const Spacer(),
             tapButton,
             const SizedBox(
