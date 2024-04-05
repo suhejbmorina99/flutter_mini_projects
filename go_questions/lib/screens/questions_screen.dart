@@ -24,6 +24,50 @@ class _QuestionScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionIndex];
+
+    Widget tapButton = TextButton(
+      onPressed: goToNextQuestion,
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+        foregroundColor: Colors.lightBlue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+        ),
+      ),
+      child: Text(
+        'Tap to continue',
+        style: GoogleFonts.nunito(
+          fontSize: 18,
+        ),
+      ),
+    );
+
+    if (currentQuestionIndex == questions.length - 1) {
+      tapButton = TextButton(
+        onPressed: () {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            '/workoutsscreen',
+            ModalRoute.withName(
+                '/workoutsscreen'), // This will remove all routes until the initial route
+          );
+        },
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 118, vertical: 10),
+          foregroundColor: Colors.lightBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+        ),
+        child: Text(
+          'Finish',
+          style: GoogleFonts.nunito(
+            fontSize: 18,
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -41,10 +85,7 @@ class _QuestionScreenState extends State<QuestionsScreen> {
           children: [
             Text(currentQuestion.question),
             const Spacer(),
-            TextButton(
-              onPressed: goToNextQuestion,
-              child: const Text('Tap to continue'),
-            ),
+            tapButton,
             const SizedBox(
               height: 50,
             ),
