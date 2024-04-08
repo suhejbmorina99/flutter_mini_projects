@@ -12,7 +12,6 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionsScreen> {
-  var activeScreen = 'start-screen';
   var currentQuestionIndex = 0;
 
   void goToNextQuestion() {
@@ -70,14 +69,28 @@ class _QuestionScreenState extends State<QuestionsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Str8ch',
-          style: GoogleFonts.nunito(
-            fontSize: 24,
-          ),
-        ),
-        centerTitle: true,
         backgroundColor: Colors.white,
+        actions: [
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                questions.length,
+                (index) => Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: index == currentQuestionIndex
+                        ? Colors.lightBlue
+                        : Colors.grey,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       backgroundColor: Colors.white,
       body: Center(
