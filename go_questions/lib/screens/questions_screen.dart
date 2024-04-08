@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_questions/data/questions_data.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -73,21 +75,19 @@ class _QuestionScreenState extends State<QuestionsScreen> {
         actions: [
           Expanded(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                questions.length,
-                (index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: index == currentQuestionIndex
-                        ? Colors.lightBlue
-                        : Colors.grey,
+              mainAxisAlignment:
+                  MainAxisAlignment.center, // Center horizontally
+              children: [
+                SmoothPageIndicator(
+                  controller: PageController(initialPage: currentQuestionIndex),
+                  count: questions.length,
+                  effect: const ExpandingDotsEffect(
+                    activeDotColor: Colors.lightBlue,
+                    dotHeight: 12,
+                    dotWidth: 13,
                   ),
                 ),
-              ),
+              ],
             ),
           ),
         ],
