@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_questions/data/questions_data.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -104,7 +103,38 @@ class _QuestionScreenState extends State<QuestionsScreen> {
               ),
               textAlign: TextAlign.center,
             ),
-            const Spacer(),
+            const SizedBox(
+              height: 30,
+            ),
+            Expanded(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width - 80,
+                child: ListView(
+                  children: currentQuestion.getShuffledAnswer().map((answer) {
+                    return Container(
+                      height: 50,
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Colors.lightBlue,
+                        child: Center(
+                          child: Text(
+                            answer,
+                            style: GoogleFonts.nunito(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
             tapButton,
             const SizedBox(
               height: 50,
