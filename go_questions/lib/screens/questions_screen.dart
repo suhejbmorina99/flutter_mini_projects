@@ -38,19 +38,20 @@ class _QuestionScreenState extends State<QuestionsScreen> {
                   goToNextQuestion();
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 20,
-                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                  foregroundColor: Colors.white,
                   backgroundColor: Colors.lightBlue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
                 ),
-                child: Center(
-                  child: Text(
-                    answer,
-                    style: GoogleFonts.nunito(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
+                child: Text(
+                  answer,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.nunito(
+                    fontSize: 18,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -80,18 +81,21 @@ class _QuestionScreenState extends State<QuestionsScreen> {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
+                      horizontal: 100,
                       vertical: 10,
-                      horizontal: 20,
                     ),
+                    foregroundColor: Colors.white,
                     backgroundColor: Colors.lightBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                   ),
-                  child: Center(
-                    child: Text(
-                      answer,
-                      style: GoogleFonts.nunito(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
+                  child: Text(
+                    answer,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.nunito(
+                      fontSize: 18,
+                      color: Colors.white,
                     ),
                   ),
                 ),
