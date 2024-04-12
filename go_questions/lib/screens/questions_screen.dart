@@ -18,7 +18,6 @@ class _QuestionScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
   void goToNextQuestion() {
-    print('1');
     setState(() {
       currentQuestionIndex++;
     });
