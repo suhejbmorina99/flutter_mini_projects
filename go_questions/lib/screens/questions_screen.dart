@@ -38,8 +38,6 @@ class _QuestionScreenState extends State<QuestionsScreen> {
                   goToNextQuestion();
                 },
                 style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.lightBlue,
                   shape: RoundedRectangleBorder(
@@ -80,10 +78,6 @@ class _QuestionScreenState extends State<QuestionsScreen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 100,
-                      vertical: 10,
-                    ),
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.lightBlue,
                     shape: RoundedRectangleBorder(
