@@ -25,44 +25,78 @@ class _QuestionScreenState extends State<QuestionsScreen> {
   Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionIndex];
 
-    Widget tapButton = TextButton(
-      onPressed: goToNextQuestion,
-      style: TextButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
-        foregroundColor: Colors.lightBlue,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6),
-        ),
-      ),
-      child: Text(
-        'Tap to continue',
-        style: GoogleFonts.nunito(
-          fontSize: 18,
+    Widget tapButton = Expanded(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width - 80,
+        child: ListView(
+          children: currentQuestion.getShuffledAnswer().map((answer) {
+            return Container(
+              height: 50,
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              child: ElevatedButton(
+                onPressed: () {
+                  goToNextQuestion();
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 20,
+                  ),
+                  backgroundColor: Colors.lightBlue,
+                ),
+                child: Center(
+                  child: Text(
+                    answer,
+                    style: GoogleFonts.nunito(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
         ),
       ),
     );
 
     if (currentQuestionIndex == questions.length - 1) {
-      tapButton = TextButton(
-        onPressed: () {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            '/workoutsscreen',
-            ModalRoute.withName(
-                '/workoutsscreen'), // This will remove all routes until the initial route
-          );
-        },
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 118, vertical: 10),
-          foregroundColor: Colors.lightBlue,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
-          ),
-        ),
-        child: Text(
-          'Finish',
-          style: GoogleFonts.nunito(
-            fontSize: 18,
+      tapButton = Expanded(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width - 80,
+          child: ListView(
+            children: currentQuestion.getShuffledAnswer().map((answer) {
+              return Container(
+                height: 50,
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/workoutsscreen',
+                      ModalRoute.withName(
+                          '/workoutsscreen'), // This will remove all routes until the initial route
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 20,
+                    ),
+                    backgroundColor: Colors.lightBlue,
+                  ),
+                  child: Center(
+                    child: Text(
+                      answer,
+                      style: GoogleFonts.nunito(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
           ),
         ),
       );
@@ -106,35 +140,6 @@ class _QuestionScreenState extends State<QuestionsScreen> {
             const SizedBox(
               height: 30,
             ),
-            Expanded(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width - 80,
-                child: ListView(
-                  children: currentQuestion.getShuffledAnswer().map((answer) {
-                    return Container(
-                      height: 50,
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        color: Colors.lightBlue,
-                        child: Center(
-                          child: Text(
-                            answer,
-                            style: GoogleFonts.nunito(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
             tapButton,
             const SizedBox(
               height: 50,

@@ -7,17 +7,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     '',
-      //     style: GoogleFonts.nunito(
-      //       fontSize: 24,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      //   backgroundColor: Colors.white,
-      // ),
-      // backgroundColor: Colors.white,
       body: Stack(
         children: [
           Positioned(
