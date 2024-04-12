@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_questions/data/questions_data.dart';
+import 'package:go_questions/widgets/answer_question_button.dart';
+import 'package:go_questions/widgets/last_answer_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -16,6 +18,7 @@ class _QuestionScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
   void goToNextQuestion() {
+    print('1');
     setState(() {
       currentQuestionIndex++;
     });
@@ -25,78 +28,14 @@ class _QuestionScreenState extends State<QuestionsScreen> {
   Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionIndex];
 
-    Widget tapButton = Expanded(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width - 80,
-        child: ListView(
-          children: currentQuestion.getShuffledAnswer().map((answer) {
-            return Container(
-              height: 50,
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              child: ElevatedButton(
-                onPressed: () {
-                  goToNextQuestion();
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.lightBlue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                child: Text(
-                  answer,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.nunito(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            );
-          }).toList(),
-        ),
-      ),
+    Widget tapButton = AnswerButton(
+      questionIndex: currentQuestionIndex,
+      onTap: goToNextQuestion,
     );
 
     if (currentQuestionIndex == questions.length - 1) {
-      tapButton = Expanded(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width - 80,
-          child: ListView(
-            children: currentQuestion.getShuffledAnswer().map((answer) {
-              return Container(
-                height: 50,
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/workoutsscreen',
-                      ModalRoute.withName(
-                          '/workoutsscreen'), // This will remove all routes until the initial route
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.lightBlue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-                  child: Text(
-                    answer,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.nunito(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-        ),
+      tapButton = LastAnswerButton(
+        questionIndex: currentQuestionIndex,
       );
     }
 
