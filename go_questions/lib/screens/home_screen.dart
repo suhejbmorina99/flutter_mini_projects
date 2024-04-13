@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -47,32 +48,35 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/questionsscreen',
-                      ModalRoute.withName('/questionsscreen'),
-                      //A route that blocks interaction with previous routes.
-                      //Qekjo ModalRoute
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 100, vertical: 10),
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.lightBlue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 80,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/questionsscreen',
+                        ModalRoute.withName('/questionsscreen'),
+                        //A route that blocks interaction with previous routes.
+                        //Qekjo ModalRoute
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.lightBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    'Continue',
-                    style: GoogleFonts.nunito(
-                      fontSize: 18,
+                    child: Text(
+                      'Continue',
+                      style: GoogleFonts.nunito(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),
+
                 const SizedBox(
                   height: 50,
                 ),
