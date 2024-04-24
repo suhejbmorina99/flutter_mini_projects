@@ -29,7 +29,6 @@ class _QuestionScreenState extends State<QuestionsScreen> {
     setState(() {
       currentQuestionIndex++;
       preferences.setInt('currentQuestionIndex', currentQuestionIndex);
-      print(preferences.setInt('currentQuestionIndex', currentQuestionIndex));
     });
   }
 
