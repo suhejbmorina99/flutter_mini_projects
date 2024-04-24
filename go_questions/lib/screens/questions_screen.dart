@@ -3,6 +3,7 @@ import 'package:go_questions/data/questions_data.dart';
 import 'package:go_questions/widgets/answer_question_button.dart';
 import 'package:go_questions/widgets/last_answer_button.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -17,9 +18,34 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
-  void goToNextQuestion() {
+  @override
+  void initState() {
+    loadData();
+    super.initState();
+  }
+
+  void goToNextQuestion() async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       currentQuestionIndex++;
+      preferences.setInt('currentQuestionIndex', currentQuestionIndex);
+      print(preferences.setInt('currentQuestionIndex', currentQuestionIndex));
+    });
+  }
+
+  void loadData() async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    setState(() {
+      currentQuestionIndex = preferences.getInt('currentQuestionIndex') ?? 0;
+      if (currentQuestionIndex == questions.length - 1) {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/workoutsscreen',
+          ModalRoute.withName('/workoutsscreen'),
+        );
+      }
+      // preferences.clear();
     });
   }
 
