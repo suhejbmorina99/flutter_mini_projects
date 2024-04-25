@@ -1,3 +1,5 @@
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,7 +38,7 @@ class WorkoutScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    color: const Color.fromARGB(255, 68, 64, 64),
+                    color: Colors.blueAccent,
                     child: const Center(child: Text('Second Row')),
                   ),
                 ),
@@ -45,17 +47,20 @@ class WorkoutScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: CurvedNavigationBar(
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fitness_center),
-            label: 'Workouts',
+          CurvedNavigationBarItem(
+            child: Icon(Icons.sports_gymnastics),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+          CurvedNavigationBarItem(
+            child: Icon(Icons.perm_identity),
           ),
         ],
+        color: Colors.white,
+        buttonBackgroundColor: Colors.white,
+        backgroundColor: Colors.blueAccent,
+        animationCurve: Curves.easeInOutBack,
+        animationDuration: const Duration(milliseconds: 1300),
       ),
     );
   }
