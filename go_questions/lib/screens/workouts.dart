@@ -57,7 +57,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
         buttonBackgroundColor: Colors.white,
         backgroundColor: Colors.blueAccent,
         animationCurve: Curves.easeInOutBack,
-        animationDuration: const Duration(milliseconds: 1300),
+        animationDuration: const Duration(milliseconds: 500),
       ),
     );
   }
